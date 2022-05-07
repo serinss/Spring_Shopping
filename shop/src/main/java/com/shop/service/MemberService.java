@@ -23,7 +23,7 @@ public class MemberService {
     private void validateDuplicateMember(Member member){ //이미 가입된 회원의 경우 IllegalStateException을 발생시킨다.
         Member findMember = memberRepository.findByEmail(member.getEmail());
         if(findMember != null){
-            throw new IllegalStateException("이미 가입된 회원입니다");
+            throw new IllegalStateException("이미 가입된 회원입니다.");
         }
     }
 }
