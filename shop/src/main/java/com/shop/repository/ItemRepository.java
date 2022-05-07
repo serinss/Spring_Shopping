@@ -3,12 +3,14 @@ package com.shop.repository;
 import com.shop.entity.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface ItemRepository extends JpaRepository<Item, Long> {
-
+public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredicateExecutor<Item> {
+// Predict : '이 조건이 맞다' 고 판단하는 근거를 함수로 제공하는 것이다.
+// Repository에 Predict를 파라미터로 전달하기 위해 QuerydslPredicateExecutor<Item> 인터페이스를 상속받자
     List<Item> findByItemNm(String itemNm);
 
     List<Item> findByItemNmOrItemDetail(String itemNm, String itemDetail);
