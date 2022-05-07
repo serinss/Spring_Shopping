@@ -18,6 +18,11 @@
 	</properties>
 	<dependencies>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -25,15 +30,12 @@
 			<version>5.8.2</version>
 		</dependency>
 
-
 		<!-- https://mvnrepository.com/artifact/junit/junit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.13.2</version>
 		</dependency>
-
-
 
 		<!-- Querydls 은 JPQL 을 코드로 작성할 수 있도록 도와주는 빌더 API 이다 -->
 		<!-- https://mvnrepository.com/artifact/com.querydsl/querydsl-jpa -->
@@ -48,8 +50,6 @@
 			<artifactId>querydsl-apt</artifactId>
 			<version>5.0.0</version>
 		</dependency>
-
-
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
