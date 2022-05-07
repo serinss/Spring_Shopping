@@ -7,7 +7,6 @@ import com.shop.constant.ItemSellStatus;
 import com.shop.entity.Item;
 import com.shop.entity.QItem;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
@@ -196,7 +195,7 @@ class ItemRepositoryTest {
         }
     }
 
-    @Test
+    //@Test
     @DisplayName("상품 Querydsl 조회 테스트 2")
     public void queryDslTest2(){
 
