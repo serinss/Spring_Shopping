@@ -18,6 +18,14 @@
 	</properties>
 	<dependencies>
 
+		<!-- 엔티티 객체를 DTO 객체로 바꿔주는 작업을 도와주는 라이브러리 modelmapper
+		     : 서로 다른 클래스의 값을 필드의 이름과 자료형이 같으면 getter,setter를 통해 값을 복사해 객체를 반환함-->
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>2.4.4</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.thymeleaf.extras</groupId>
 			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
