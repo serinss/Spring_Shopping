@@ -18,11 +18,11 @@ public class CartItem {
     @Column(name = "cart_item_id")
     private Long id;
 
-    @ManyToOne //1(하나의 장바구니)-N(여러개 물품)
+    @ManyToOne(fetch = FetchType.LAZY) //1(하나의 장바구니)-N(여러개 물품)
     @JoinColumn(name = "cart_id")
     private Cart cart;
 
-    @ManyToOne //1(하나의 상품)-N(여러개 장바구니)
+    @ManyToOne(fetch = FetchType.LAZY) //1(하나의 상품)-N(여러개 장바구니)
     @JoinColumn(name = "item_id")
     private Item item;
 

@@ -17,7 +17,7 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @OneToOne //장바구니와 회원은 1-1
+    @OneToOne(fetch = FetchType.LAZY) //장바구니와 회원은 1-1
     @JoinColumn(name = "member_id") //매핑할 외래키 지정
     private Member member;
 }
