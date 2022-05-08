@@ -48,22 +48,43 @@ public class ItemService {
     // 2. 상품 수정하기
     @Transactional(readOnly = true) //더티체킹X
     public ItemFormDto getItemDtl(Long itemId){
-        
+
         // 상품 이미지 아이디 오름차순으로 조회
         List<ItemImg> itemImgList = itemImgRepository.findByItemIdOrderByIdAsc(itemId);
         List<ItemImgDto> itemImgDtoList = new ArrayList<>();
-        
+
         //조회한 itemImg 엔티티를 itemImgDto 객체로 만들어서 리스트에 추가
-        for(ItemImg itemImg : itemImgList){
+        for (ItemImg itemImg : itemImgList) {
             ItemImgDto itemImgDto = ItemImgDto.of(itemImg);
             itemImgDtoList.add(itemImgDto);
         }
-        
+
         // 상품 아이디로 조회, 존재하지 않으면 EntityNotFoundException 발생
         Item item = itemRepository.findById(itemId)
                 .orElseThrow(EntityNotFoundException::new);
         ItemFormDto itemFormDto = ItemFormDto.of(item);
         itemFormDto.setItemImgDtoList(itemImgDtoList);
         return itemFormDto;
+    }
+
+    public Long updateItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception{
+
+        // 상품 수정 화면에서 전달받은 아이디를 이용하여 상품 엔티티 조회
+        Item item = itemRepository.findById(itemFormDto.getId())
+                .orElseThrow(EntityNotFoundException::new);
+
+        // 전달된 내용으로 DB 업데이트
+        item.updateItem(itemFormDto);
+
+        //상품 이미지 아이디 리스트 조회
+        List<Long> itemImgIds = itemFormDto.getItemImgIds();
+
+        // 이미지 등록하기 위해 updateItemImg() 메서드로 전달
+        for(int i=0;i<itemImgFileList.size();i++){
+            itemImgService.updateItemImg(itemImgIds.get(i),
+                    itemImgFileList.get(i));
+        }
+
+        return item.getId();
     }
 }
