@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Table(name = "item")
 @Getter @Setter
 @ToString
-public class Item { //상품의 가장 기본적인 정보
+public class Item extends BaseEntity{ //상품의 가장 기본적인 정보
 
     @Id
     @Column(name = "item_id")

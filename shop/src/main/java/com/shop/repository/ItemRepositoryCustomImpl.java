@@ -50,13 +50,13 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
         return QItem.item.regTime.after(dateTime);
     }
 
-    // serchBy의 값에 따라 상품명에 검색어를 포함하고 있는 상품만 조회
+    // searchBy의 값에 따라 상품명에 검색어를 포함하고 있는 상품만 조회
     private BooleanExpression searchByLike(String searchBy, String searchQuery){
 
         if(StringUtils.equals("itemNm", searchBy)){
-            return QItem.item.itemNm.like("%"+searchQuery+"%");
-        } else if(StringUtils.equals("createBy", searchBy)){
-            return QItem.item.createBy.like("%"+searchQuery+"%");
+            return QItem.item.itemNm.like("%" + searchQuery + "%");
+        } else if(StringUtils.equals("createdBy", searchBy)){
+            return QItem.item.createdBy.like("%" + searchQuery + "%");
         }
 
         return null;

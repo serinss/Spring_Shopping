@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Getter @Setter
 @Table(name = "cart_item")
-public class CartItem {
+public class CartItem extends BaseEntity{
     /*
     장바구니(Cart) -> 장바구니에 든 아이템(CartItem) -> 해당 아이템의 정보(Item)
     둘 다 다대일 단방향 매핑
