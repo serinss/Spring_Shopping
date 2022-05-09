@@ -8,9 +8,10 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredicateExecutor<Item> {
+public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredicateExecutor<Item>, ItemRepositoryCustom {
 // Predict : '이 조건이 맞다' 고 판단하는 근거를 함수로 제공하는 것이다.
 // Repository에 Predict를 파라미터로 전달하기 위해 QuerydslPredicateExecutor<Item> 인터페이스를 상속받자
+// ItemRepositoryCustom 에서 지정한 기능들을 상속받음 (검색)
     List<Item> findByItemNm(String itemNm);
 
     List<Item> findByItemNmOrItemDetail(String itemNm, String itemDetail);
